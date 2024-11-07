@@ -33,58 +33,6 @@ const TeamLeader = ({ sidenavType = "light" }) => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/dashboard/teamLeaderMember">
-          {({ isActive }) => (
-            <Button
-              variant={isActive ? "gradient" : "text"}
-              color={
-                isActive
-                  ? "blue"
-                  : sidenavType === "dark"
-                  ? "white"
-                  : "blue-gray"
-              }
-              className="flex items-center gap-4 px-4 capitalize"
-              fullWidth
-            >
-              <FaHome />
-              <Typography
-                color="inherit"
-                className="font-medium text-sm capitalize"
-              >
-                team member
-              </Typography>
-            </Button>
-          )}
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/dashboard/teamLeaderActiveStudent">
-          {({ isActive }) => (
-            <Button
-              variant={isActive ? "gradient" : "text"}
-              color={
-                isActive
-                  ? "blue"
-                  : sidenavType === "dark"
-                  ? "white"
-                  : "blue-gray"
-              }
-              className="flex items-center gap-4 px-4 capitalize"
-              fullWidth
-            >
-              <FaHome />
-              <Typography
-                color="inherit"
-                className="font-medium text-sm capitalize"
-              >
-                active student list
-              </Typography>
-            </Button>
-          )}
-        </NavLink>
-      </li>
-      <li>
         <NavLink to="/dashboard/adminCreateUser">
           {({ isActive }) => (
             <Button
@@ -111,7 +59,33 @@ const TeamLeader = ({ sidenavType = "light" }) => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/dashboard/team-leader-trainer-list">
+        <NavLink to="/dashboard/teamLeaderActiveStudent">
+          {({ isActive }) => (
+            <Button
+              variant={isActive ? "gradient" : "text"}
+              color={
+                isActive
+                  ? "blue"
+                  : sidenavType === "dark"
+                  ? "white"
+                  : "blue-gray"
+              }
+              className="flex items-center gap-4 px-4 capitalize"
+              fullWidth
+            >
+              <FaHome />
+              <Typography
+                color="inherit"
+                className="font-medium text-sm capitalize"
+              >
+                mapped student
+              </Typography>
+            </Button>
+          )}
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/dashboard/teamLeader-teacher-list">
           {({ isActive }) => (
             <Button
               variant={isActive ? "gradient" : "text"}
@@ -131,32 +105,6 @@ const TeamLeader = ({ sidenavType = "light" }) => {
                 className="font-medium text-sm capitalize"
               >
                 teacher list
-              </Typography>
-            </Button>
-          )}
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/dashboard/teamleaderMaptoTrainer">
-          {({ isActive }) => (
-            <Button
-              variant={isActive ? "gradient" : "text"}
-              color={
-                isActive
-                  ? "blue"
-                  : sidenavType === "dark"
-                  ? "white"
-                  : "blue-gray"
-              }
-              className="flex items-center gap-4 px-4 capitalize"
-              fullWidth
-            >
-              <FaHome />
-              <Typography
-                color="inherit"
-                className="font-medium text-sm capitalize"
-              >
-                leader to trainer map
               </Typography>
             </Button>
           )}
@@ -189,33 +137,7 @@ const TeamLeader = ({ sidenavType = "light" }) => {
         </NavLink>
       </li>
       <li>
-          <NavLink to="/dashboard/withdraw">
-            {({ isActive }) => (
-              <Button
-                variant={isActive ? "gradient" : "text"}
-                color={
-                  isActive
-                    ? "blue"
-                    : sidenavType === "dark"
-                    ? "white"
-                    : "blue-gray"
-                }
-                className="flex items-center gap-4 px-4 capitalize"
-                fullWidth
-              >
-                <FaHome />
-                <Typography
-                  color="inherit"
-                  className="font-medium text-sm capitalize"
-                >
-                  Withdrawals
-                </Typography>
-              </Button>
-            )}
-          </NavLink>
-        </li>
-      <li>
-        <NavLink to="/dashboard/trainerActiveMember">
+        <NavLink to="/dashboard/withdraw">
           {({ isActive }) => (
             <Button
               variant={isActive ? "gradient" : "text"}
@@ -234,14 +156,14 @@ const TeamLeader = ({ sidenavType = "light" }) => {
                 color="inherit"
                 className="font-medium text-sm capitalize"
               >
-                active member
+                Withdrawals
               </Typography>
             </Button>
           )}
         </NavLink>
       </li>
       <li>
-        <NavLink to="/dashboard/trainerInactiveMem">
+        <NavLink to="/dashboard/leader-active-list">
           {({ isActive }) => (
             <Button
               variant={isActive ? "gradient" : "text"}
@@ -260,14 +182,14 @@ const TeamLeader = ({ sidenavType = "light" }) => {
                 color="inherit"
                 className="font-medium text-sm capitalize"
               >
-                in active member
+                active student
               </Typography>
             </Button>
           )}
         </NavLink>
       </li>
       <li>
-        <NavLink to="/dashboard/memberLeadData">
+        <NavLink to="/dashboard/leader-inactive-list">
           {({ isActive }) => (
             <Button
               variant={isActive ? "gradient" : "text"}
@@ -286,7 +208,7 @@ const TeamLeader = ({ sidenavType = "light" }) => {
                 color="inherit"
                 className="font-medium text-sm capitalize"
               >
-                member lead data
+                inactive student
               </Typography>
             </Button>
           )}

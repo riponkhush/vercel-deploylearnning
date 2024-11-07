@@ -28,23 +28,18 @@ import CouncilorMappingStudent from "../pages/Controler/CouncilorMappingStudent"
 import CouncilorMappingSystem from "../pages/Controler/CouncilorMappingSystem";
 import MappingStudent from "../pages/Controler/MappingStudent";
 import NotMappingStudent from "../pages/Controler/NotMappingStudent";
-import SeniorTeamMappingMemr from "../pages/Controler/SeniorTeamMappingMemr";
 import ActiveStudentMapping from "../pages/Councilor/ActiveStudentMapping";
 import CouncilorActiveMember from "../pages/Councilor/CouncilorActiveMember";
 import CouncilorInActiveStudent from "../pages/Councilor/CouncilorInActiveStudent";
-import CreateSeniorTeamLeader from "../pages/Councilor/CreateSeniorTeamLeader";
 import MappingMember from "../pages/Councilor/MappingMember";
 import MessageDoneMember from "../pages/Councilor/MessageDoneMember";
 import SendSms from "../pages/Councilor/SendSms";
 import ActiveUser from "../pages/Manager/ActiveUser";
 import InActiveUser from "../pages/Manager/InActiveUser";
 import ManagerAllUserList from "../pages/Manager/ManagerAllUserList";
-import SeniorActiveMember from "../pages/SeniorTeamLeader/SeniorActiveMember";
 import SeniorForActiveStudent from "../pages/SeniorTeamLeader/SeniorForActiveStudent";
 import SeniorInActiveMem from "../pages/SeniorTeamLeader/SeniorInActiveMem";
-import TeamLeadedId from "../pages/SeniorTeamLeader/TeamLeadedId";
 import TeamLeadedList from "../pages/SeniorTeamLeader/TeamLeadedList";
-import TeamMember from "../pages/SeniorTeamLeader/TeamMember";
 import AffliateMarketing from "../pages/Student/AffliateMarketing";
 import Liveclass from "../pages/Student/liveclass";
 import Mypassbook from "../pages/Student/mypassbook";
@@ -56,20 +51,7 @@ import UploadImage from "../pages/Student/UploadImage";
 import Withdrawal from "../pages/Student/withdrawal";
 import AddLiveClass from "../pages/TeacherPage/AddLiveClass";
 import LiveClassList from "../pages/TeacherPage/LiveClassList";
-import CreateTrainer from "../pages/TeamLeaderpage/CreateTrainer";
-import MemberLeadData from "../pages/TeamLeaderpage/MemberLeadData";
-import TeamLeaderActiveMem from "../pages/TeamLeaderpage/TeamLeaderActiveMem";
 import TeamLeaderActiveStudent from "../pages/TeamLeaderpage/TeamLeaderActiveStudent";
-import TeamLeaderInActiveMem from "../pages/TeamLeaderpage/TeamLeaderInActiveMem";
-import TeamLeadermaptoTrainer from "../pages/TeamLeaderpage/TeamLeadermaptoTrainer";
-import TeamLeaderMember from "../pages/TeamLeaderpage/TeamLeaderMember";
-import TmLeaderTrainer from "../pages/TeamLeaderpage/TmLeaderTrainer";
-import TrainerActiveMember from "../pages/Trainer/TrainerActiveMember";
-import TrainerInActiveMem from "../pages/Trainer/TrainerInActiveMem";
-import TrainerMappingStudent from "../pages/Trainer/TrainerMappingStudent";
-import TrainerPassbook from "../pages/Trainer/TrainerPassbook";
-import TrainerReferMember from "../pages/Trainer/TrainerReferMember";
-import TrainerTeamMember from "./../pages/Trainer/TrainerTeamMember";
 import Login from "../pages/Login/Login";
 import Dashboard from "../layout/Dashboard";
 import SignUp from "../pages/SignUp/SignUp";
@@ -78,7 +60,6 @@ import StudentAllCourse from "../pages/Student/StudentAllCourse";
 import PendingFeeStudent from "../pages/Admin/PendingFeeStudent";
 import NotPendingFeeStudent from "../pages/Admin/NotPendingFeeStudent";
 import UsersBonusSystem from "../pages/Admin/UsersBonusSystem";
-import TmTrainerList from "../pages/TeamLeaderpage/TmTrainerList";
 import ProductList from "../pages/Admin/ProductList";
 import OneStudentMapping from "../pages/Admin/OneStudentMapping";
 import UserDetail from "../pages/UserDetails/UserDetail";
@@ -94,6 +75,9 @@ import SeniorTeamLeaderList from "../pages/SeniorTeamLeader/SeniorTeamLeaderList
 import ALlActiveForSeniorLeader from "../pages/SeniorTeamLeader/ALlActiveForSeniorLeader";
 import MappedStudents from "../pages/SeniorTeamLeader/MappedStudents";
 import SmsDoneStudent from "../pages/Controler/SmsDoneStudent";
+import TeamLeaderTeacherList from "../pages/TeamLeaderpage/TeamLeaderTeacherList";
+import LeaderActiveStudent from "../pages/TeamLeaderpage/LeaderActiveStudent";
+import LeaderInactiveStudent from "../pages/TeamLeaderpage/LeaderInactiveStudent";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -127,7 +111,7 @@ export const router = createBrowserRouter([
           {
             path: "account",
             element: (
-              <ProtectedRoute>
+              <ProtectedRoute allowedRoles={[ "Admin"]}>
                 <Account></Account>
               </ProtectedRoute>
             ),
@@ -348,14 +332,6 @@ export const router = createBrowserRouter([
               </ProtectedRoute>
             ),
           },
-          // {
-          //   path: "councilorMapping",
-          //   element: (
-          //     <ProtectedRoute>
-          //       <CouncilorMapping></CouncilorMapping>
-          //     </ProtectedRoute>
-          //   ),
-          // },
           {
             path: "councilorMappingStudent",
             element: (
@@ -406,18 +382,6 @@ export const router = createBrowserRouter([
             ),
           },
           {
-            path: "employee-passbook",
-            element: <ProtectedRoute></ProtectedRoute>,
-          },
-          {
-            path: "seniorTeamMappinMbr",
-            element: (
-              <ProtectedRoute>
-                <SeniorTeamMappingMemr></SeniorTeamMappingMemr>
-              </ProtectedRoute>
-            ),
-          },
-          {
             path: "activeStudentMapping",
             element: (
               <ProtectedRoute>
@@ -426,9 +390,9 @@ export const router = createBrowserRouter([
             ),
           },
           {
-            path: "councilorActiveMember",
+            path: "councilor-Active-student",
             element: (
-              <ProtectedRoute>
+              <ProtectedRoute allowedRoles={["Councilor"]}>
                 <CouncilorActiveMember></CouncilorActiveMember>
               </ProtectedRoute>
             ),
@@ -436,16 +400,8 @@ export const router = createBrowserRouter([
           {
             path: "councilorInActiveStudent",
             element: (
-              <ProtectedRoute>
+              <ProtectedRoute allowedRoles={["Councilor"]}>
                 <CouncilorInActiveStudent></CouncilorInActiveStudent>
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: "createSeniorTeamLeader",
-            element: (
-              <ProtectedRoute>
-                <CreateSeniorTeamLeader></CreateSeniorTeamLeader>
               </ProtectedRoute>
             ),
           },
@@ -489,14 +445,6 @@ export const router = createBrowserRouter([
               </ProtectedRoute>
             ),
           },
-          // {
-          //   path: "createUser",
-          //   element: (
-          //     <ProtectedRoute>
-          //       <CreateUser></CreateUser>
-          //     </ProtectedRoute>
-          //   ),
-          // },
           {
             path: "inActiveUser",
             element: (
@@ -514,17 +462,9 @@ export const router = createBrowserRouter([
             ),
           },
           {
-            path: "seniorActiveMember",
-            element: (
-              <ProtectedRoute>
-                <SeniorActiveMember></SeniorActiveMember>
-              </ProtectedRoute>
-            ),
-          },
-          {
             path: "seniorForActiveStudent",
             element: (
-              <ProtectedRoute>
+              <ProtectedRoute allowedRoles={["Senior Team Leader"]}>
                 <SeniorForActiveStudent></SeniorForActiveStudent>
               </ProtectedRoute>
             ),
@@ -532,16 +472,8 @@ export const router = createBrowserRouter([
           {
             path: "seniorInActiveMember",
             element: (
-              <ProtectedRoute>
+              <ProtectedRoute allowedRoles={["Senior Team Leader"]}>
                 <SeniorInActiveMem></SeniorInActiveMem>
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: "teamLeaderId",
-            element: (
-              <ProtectedRoute>
-                <TeamLeadedId></TeamLeadedId>
               </ProtectedRoute>
             ),
           },
@@ -550,14 +482,6 @@ export const router = createBrowserRouter([
             element: (
               <ProtectedRoute >
                 <TeamLeadedList></TeamLeadedList>
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: "teamMember",
-            element: (
-              <ProtectedRoute>
-                <TeamMember></TeamMember>{" "}
               </ProtectedRoute>
             ),
           },
@@ -650,114 +574,34 @@ export const router = createBrowserRouter([
             ),
           },
           {
-            path: "createTrainer",
-            element: (
-              <ProtectedRoute>
-                <CreateTrainer></CreateTrainer>
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: "memberLeadData",
-            element: (
-              <ProtectedRoute>
-                <MemberLeadData></MemberLeadData>
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: "teamLeaderActiveMember",
-            element: (
-              <ProtectedRoute>
-                <TeamLeaderActiveMem></TeamLeaderActiveMem>
-              </ProtectedRoute>
-            ),
-          },
-          {
             path: "teamLeaderActiveStudent",
             element: (
-              <ProtectedRoute>
+              <ProtectedRoute allowedRoles={["Team Leader"]}>
                 <TeamLeaderActiveStudent></TeamLeaderActiveStudent>
               </ProtectedRoute>
             ),
           },
           {
-            path: "teamLeaderInactiveMember",
+            path: "leader-active-list",
             element: (
-              <ProtectedRoute>
-                <TeamLeaderInActiveMem></TeamLeaderInActiveMem>
+              <ProtectedRoute allowedRoles={["Team Leader"]}>
+                <LeaderActiveStudent></LeaderActiveStudent>
               </ProtectedRoute>
             ),
           },
           {
-            path: "teamleaderMaptoTrainer",
+            path: "leader-inactive-list",
             element: (
-              <ProtectedRoute>
-                <TeamLeadermaptoTrainer></TeamLeadermaptoTrainer>
+              <ProtectedRoute allowedRoles={["Team Leader"]}>
+                <LeaderInactiveStudent></LeaderInactiveStudent>
               </ProtectedRoute>
             ),
           },
           {
-            path: "teamLeaderMember",
+            path: "teamLeader-teacher-list",
             element: (
-              <ProtectedRoute>
-                <TeamLeaderMember></TeamLeaderMember>
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: "teamleaderTrainer",
-            element: (
-              <ProtectedRoute>
-                <TmLeaderTrainer></TmLeaderTrainer>
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: "trainerActiveMember",
-            element: (
-              <ProtectedRoute>
-                <TrainerActiveMember></TrainerActiveMember>
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: "trainerInactiveMem",
-            element: (
-              <ProtectedRoute>
-                <TrainerInActiveMem></TrainerInActiveMem>
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: "trainerMappingStudent",
-            element: (
-              <ProtectedRoute>
-                <TrainerMappingStudent></TrainerMappingStudent>
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: "trainerPassbook",
-            element: (
-              <ProtectedRoute>
-                <TrainerPassbook></TrainerPassbook>
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: "trainerReferMember",
-            element: (
-              <ProtectedRoute>
-                <TrainerReferMember></TrainerReferMember>{" "}
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: "trainerTeamMem",
-            element: (
-              <ProtectedRoute>
-                <TrainerTeamMember></TrainerTeamMember>
+              <ProtectedRoute allowedRoles={["Team Leader"]}>
+                <TeamLeaderTeacherList></TeamLeaderTeacherList>
               </ProtectedRoute>
             ),
           },
@@ -798,14 +642,6 @@ export const router = createBrowserRouter([
             element: (
               <ProtectedRoute allowedRoles={["Admin", "Manager"]}>
                 <UsersBonusSystem></UsersBonusSystem>
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: "team-leader-trainer-list",
-            element: (
-              <ProtectedRoute>
-                <TmTrainerList></TmTrainerList>
               </ProtectedRoute>
             ),
           },

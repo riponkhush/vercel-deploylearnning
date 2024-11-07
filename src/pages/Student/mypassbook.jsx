@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 export const Mypassbook = () => {
   const [isUserData, setIsUserData] = useState({});
-  
+  const role = localStorage.getItem("role"); // Get the role of the logged-in user
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
@@ -45,24 +45,33 @@ export const Mypassbook = () => {
         </CardHeader>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-6">
-          <div className="text-white bg-gradient-to-r from-[#011627] via-[#0d528b] to-[#011627] shadow-md font-medium rounded-lg text-sm w-56 text-center p-4">
-            <p>Total balance: {isUserData.totalBalance} Tk</p>
-          </div>
-          <div className="text-white bg-gradient-to-r from-[#011627] via-[#0d528b] to-[#011627] shadow-md font-medium rounded-lg text-sm w-56 text-center p-4">
-            <p>Total Like Balance: {isUserData.totalLikeBalance} Tk</p>
-          </div>
-          <div className="text-white bg-gradient-to-r from-[#011627] via-[#0d528b] to-[#011627] shadow-md font-medium rounded-lg text-sm w-56 text-center p-4">
-            <p>Total Submit Balance: {isUserData.totalSubmitBalance} Tk</p>
-          </div>
-          <div className="text-white bg-gradient-to-r from-[#011627] via-[#0d528b] to-[#011627] shadow-md font-medium rounded-lg text-sm w-56 text-center p-4">
-            <p>Total Refer Balance: {isUserData.totalReferBalance} Tk</p>
-          </div>
-          <div className="text-white bg-gradient-to-r from-[#011627] via-[#0d528b] to-[#011627] shadow-md font-medium rounded-lg text-sm w-56 text-center p-4">
-            <p>Cashback: {isUserData.cashback} Tk</p>
-          </div>
-          <div className="text-white bg-gradient-to-r from-[#011627] via-[#0d528b] to-[#011627] shadow-md font-medium rounded-lg text-sm w-56 text-center p-4">
-            <p>Pending Balance: {isUserData.pendingBalance} Tk</p>
-          </div>
+          {/* Conditionally render balance fields based on role */}
+          {role === "student" ? (
+            <>
+              <div className="text-white bg-gradient-to-r from-[#011627] via-[#0d528b] to-[#011627] shadow-md font-medium rounded-lg text-sm w-56 text-center p-4">
+                <p>Total balance: {isUserData.totalBalance} Tk</p>
+              </div>
+              <div className="text-white bg-gradient-to-r from-[#011627] via-[#0d528b] to-[#011627] shadow-md font-medium rounded-lg text-sm w-56 text-center p-4">
+                <p>Total Like Balance: {isUserData.totalLikeBalance} Tk</p>
+              </div>
+              <div className="text-white bg-gradient-to-r from-[#011627] via-[#0d528b] to-[#011627] shadow-md font-medium rounded-lg text-sm w-56 text-center p-4">
+                <p>Total Submit Balance: {isUserData.totalSubmitBalance} Tk</p>
+              </div>
+              <div className="text-white bg-gradient-to-r from-[#011627] via-[#0d528b] to-[#011627] shadow-md font-medium rounded-lg text-sm w-56 text-center p-4">
+                <p>Total Refer Balance: {isUserData.totalReferBalance} Tk</p>
+              </div>
+              <div className="text-white bg-gradient-to-r from-[#011627] via-[#0d528b] to-[#011627] shadow-md font-medium rounded-lg text-sm w-56 text-center p-4">
+                <p>Cashback: {isUserData.cashback} Tk</p>
+              </div>
+              <div className="text-white bg-gradient-to-r from-[#011627] via-[#0d528b] to-[#011627] shadow-md font-medium rounded-lg text-sm w-56 text-center p-4">
+                <p>Pending Balance: {isUserData.pendingBalance} Tk</p>
+              </div>
+            </>
+          ) : (
+            <div className="text-white bg-gradient-to-r from-[#011627] via-[#0d528b] to-[#011627] shadow-md font-medium rounded-lg text-sm w-56 text-center p-4">
+              <p>Total balance: {isUserData.totalBalance} Tk</p>
+            </div>
+          )}
         </div>
 
         <Card className="shadow-none">

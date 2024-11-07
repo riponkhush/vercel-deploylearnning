@@ -195,12 +195,6 @@ const AllStudent = () => {
     }
   };
 
-
-
-
-
-
-
   return (
     <div className="mt-32 md:mt-24 mb-8 flex flex-col gap-12 w-10/12 mx-auto md:mr-0">
       <Card>
@@ -222,9 +216,9 @@ const AllStudent = () => {
             </div>
           </div>
         </CardHeader>
-        <CardBody className=" overflow-x-scroll px-0 pt-0 pb-2">
-          <table className="w-full min-w-[640px] table-auto">
-            <thead>
+        <div className="overflow-x-auto">
+          <table className="min-w-full table-auto border-collapse">
+            <thead className="bg-blue-50">
               <tr>
                 {[
                   "author",
@@ -236,10 +230,11 @@ const AllStudent = () => {
                   "referer",
                   "whatsapp no.",
                   "sms",
+                  "action"
                 ].map((el) => (
                   <th
                     key={el}
-                    className="border-b border-blue-gray-50 py-3 px-5 text-left"
+                    className="py-2 px-4 text-left text-xs font-semibold uppercase text-blue-gray-500 border-b"
                   >
                     <Typography
                       variant="small"
@@ -253,9 +248,9 @@ const AllStudent = () => {
             </thead>
             <tbody>
               {inactiveStudents.map((item) => (
-                <tr key={item._id} className="">
+                <tr key={item._id} className="even:bg-gray-50">
                   <td className="py-3 px-5">
-                    <div className="flex items-center gap-4">
+                    <div className="flex flex-col md:flex-row items-start md:items-center gap-2">
                       <Typography
                         variant="small"
                         color="blue-gray"
@@ -268,38 +263,39 @@ const AllStudent = () => {
                       </Typography>
                     </div>
                   </td>
-                  <td className="py-3 px-5">
-                    <Typography className="text-xs font-semibold text-blue-gray-600">
-                      {item.refer_code}
-                    </Typography>
+                  <td className="py-3 px-5 text-xs font-semibold text-blue-gray-600">
+                    {item.refer_code}
                   </td>
-                  <td className="py-3 px-5">
-                    <Typography className="text-xs font-semibold text-blue-gray-600">
-                      {item.status}
-                    </Typography>
+                  <td className="py-3 px-5 text-xs font-semibold text-blue-gray-600">
+                    {item.status}
                   </td>
-                  <td className="py-3 px-5">
-                    <Typography className="text-xs font-semibold text-blue-gray-600">
-                      {item.status}
-                    </Typography>
+                  <td className="py-3 px-5 text-xs font-semibold text-blue-gray-600">
+                    {item.status}
                   </td>
-                  <td className="py-3 px-5">
-                    <Typography className="text-xs font-semibold text-blue-gray-600">
-                      {item.status}
-                    </Typography>
+                  <td className="py-3 px-5 text-xs font-semibold text-blue-gray-600">
+                    {item.status}
                   </td>
-                  <td className="py-8">
-                    <Typography className="text-xs font-semibold text-blue-gray-600 cursor-pointer flex flex-col gap-1">
-                      <button onClick={() => handleActive(item._id)} className="text-white bg-gradient-to-r text-xs from-[#011627] via-[#0d528b] to-[#011627] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-[#011627] dark:focus:ring-[#011627] shadow-lg shadow-[#011627] dark:shadow-lg dark:shadow-[#011627] font-medium rounded-lg px-5  text-center">
+                  <td className="py-8 text-xs font-semibold text-blue-gray-600">
+                    <div className="flex flex-col gap-1">
+                      <button
+                        onClick={() => handleActive(item._id)}
+                        className="text-white bg-gradient-to-r from-[#011627] via-[#0d528b] to-[#011627] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-[#011627] shadow-lg font-medium rounded-lg px-5"
+                      >
                         Active
                       </button>
-                      <button onClick={() => handleInactive(item._id)} className="text-white bg-gradient-to-r text-xs from-[#011627] via-[#0d528b] to-[#011627] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-[#011627] dark:focus:ring-[#011627] shadow-lg shadow-[#011627] dark:shadow-lg dark:shadow-[#011627] font-medium rounded-lg px-5  text-center">
-                       In active
+                      <button
+                        onClick={() => handleInactive(item._id)}
+                        className="text-white bg-gradient-to-r from-[#011627] via-[#0d528b] to-[#011627] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-[#011627] shadow-lg font-medium rounded-lg px-5"
+                      >
+                        Inactive
                       </button>
-                      <button onClick={() => handleBlock(item._id)} className="text-white bg-gradient-to-r text-xs from-[#011627] via-[#0d528b] to-[#011627] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-[#011627] dark:focus:ring-[#011627] shadow-lg shadow-[#011627] dark:shadow-lg dark:shadow-[#011627] font-medium rounded-lg px-5  text-center">
-                       Block
+                      <button
+                        onClick={() => handleBlock(item._id)}
+                        className="text-white bg-gradient-to-r from-[#011627] via-[#0d528b] to-[#011627] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-[#011627] shadow-lg font-medium rounded-lg px-5"
+                      >
+                        Block
                       </button>
-                    </Typography>
+                    </div>
                   </td>
                   <td className="py-3 px-5">
                     <div
@@ -322,7 +318,7 @@ const AllStudent = () => {
                               <strong>Email:</strong> {hoveredReferer.email}
                             </p>
                             <p>
-                              <strong>Whatsapp:</strong>{" "}
+                              <strong>WhatsApp:</strong>{" "}
                               {hoveredReferer.whatsappNo}
                             </p>
                             <p>
@@ -334,41 +330,35 @@ const AllStudent = () => {
                     </div>
                   </td>
                   <td className="py-3 px-5">
-                    <Typography className="text-xs font-semibold text-blue-gray-600 capitalize">
-                      <button
-                        onClick={() => handleWhatsappSMS(item)}
-                        className="text-white bg-gradient-to-r text-xs from-[#011627] via-[#0d528b] to-[#011627] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-[#011627] dark:focus:ring-[#011627] shadow-lg shadow-[#011627] dark:shadow-lg dark:shadow-[#011627] font-medium rounded-lg text-sm px-5  text-center"
-                      >
-                        {item.whatsappNo}
-                      </button>
-                    </Typography>
+                    <button
+                      onClick={() => handleWhatsappSMS(item)}
+                      className="text-white bg-gradient-to-r from-[#011627] via-[#0d528b] to-[#011627] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-[#011627] shadow-lg font-medium rounded-lg text-xs px-5"
+                    >
+                      {item.whatsappNo}
+                    </button>
                   </td>
-                  <td className="py-3 px-5">
-                    <Typography className="text-xs font-semibold text-blue-gray-600">
-                      {item.smsDone ? "Yes" : "No"}
-                    </Typography>
+                  <td className="py-3 px-5 text-xs font-semibold text-blue-gray-600">
+                    {item.smsDone ? "Yes" : "No"}
                   </td>
-                  <td className="py-3 px-5">
-                    <Typography className="text-xs font-semibold text-blue-gray-600 flex items-center gap-2">
-                      <button
-                        onClick={() => handleDelete(item._id)}
-                        className="text-white bg-gradient-to-r from-[#011627] via-[#0d528b] to-[#011627] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-[#011627] dark:focus:ring-[#011627] shadow-lg shadow-[#011627] dark:shadow-lg dark:shadow-[#011627] font-medium rounded-lg text-sm px-5 text-center"
-                      >
-                        <MdDeleteOutline />
-                      </button>
-                      <button
-                        onClick={handleClickOpen}
-                        className="text-white bg-gradient-to-r from-[#011627] via-[#0d528b] to-[#011627] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-[#011627] dark:focus:ring-[#011627] shadow-lg shadow-[#011627] dark:shadow-lg dark:shadow-[#011627] font-medium rounded-lg text-sm px-5 text-center"
-                      >
-                        <CiEdit />
-                      </button>
-                    </Typography>
+                  <td className="py-3 px-5 flex items-center gap-2">
+                    <button
+                      onClick={() => handleDelete(item._id)}
+                      className="text-white bg-gradient-to-r from-[#011627] via-[#0d528b] to-[#011627] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-[#011627] shadow-lg font-medium rounded-lg text-sm px-5"
+                    >
+                      <MdDeleteOutline />
+                    </button>
+                    <button
+                      onClick={handleClickOpen}
+                      className="text-white bg-gradient-to-r from-[#011627] via-[#0d528b] to-[#011627] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-[#011627] shadow-lg font-medium rounded-lg text-sm px-5"
+                    >
+                      <CiEdit />
+                    </button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
-        </CardBody>
+        </div>
       </Card>
 
       <Dialog onClose={handleClose} open={open}>

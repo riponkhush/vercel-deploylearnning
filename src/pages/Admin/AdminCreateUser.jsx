@@ -68,6 +68,7 @@ const AdminCreateUser = () => {
             <Option value="Senior Team Leader">Senior Team Leader</Option>
             <Option value="Team Leader">Team Leader</Option>
             <Option value="Teacher">Teacher</Option>
+            <Option value="Checker">Checker</Option>
             <Option value="Accounter">Accounter</Option>
           </>
         );

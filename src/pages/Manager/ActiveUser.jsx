@@ -45,8 +45,9 @@ const ActiveUser = () => {
     // Prepare the payload with studentId and debitAmount (or creditAmount)
     const payload = {
       studentId: selectedStudent._id,
-      [actionType === "debit" ? "debitAmount" : "creditAmount"]: parseFloat(amount),
-        about
+      [actionType === "debit" ? "debitAmount" : "creditAmount"]:
+        parseFloat(amount),
+      about,
     };
 
     // Determine the endpoint URL based on actionType
@@ -68,7 +69,7 @@ const ActiveUser = () => {
       )
       .then((res) => {
         console.log("Response:", res.data);
-        toast.success(`${actionType}ing ${amount} for ${selectedStudent.name}`)
+        toast.success(`${actionType}ing ${amount} for ${selectedStudent.name}`);
       })
       .catch((error) => {
         console.error("Error processing request:", error);
@@ -101,132 +102,98 @@ const ActiveUser = () => {
               </div>
             </div>
           </CardHeader>
-
-          <CardBody className="overflow-x-scroll px-0 pt-0 pb-2">
-            <table className="w-full min-w-[640px] table-auto">
-              <thead>
+          <div className="overflow-auto">
+            <table className="min-w-full table-auto border-collapse">
+              <thead className="bg-blue-50">
                 <tr>
                   {[
-                    "author",
-                    "whatsapp",
-                    "mapping man",
-                    "date",
-                    "refer code",
-                    "referer id",
-                    "total amount",
-                    "refer student",
-                    "homework amount",
-                    "homework submit",
-                    "like amount",
-                    "bonus amount",
+                    "Author",
+                    "WhatsApp",
+                    "Mapping Man",
+                    "Date",
+                    "Refer Code",
+                    "Referer ID",
+                    "Total Amount",
+                    "Refer Student",
+                    "Homework Amount",
+                    "Homework Submit",
+                    "Like Amount",
+                    "Bonus Amount",
                   ].map((el) => (
                     <th
                       key={el}
-                      className="border-b border-blue-gray-50 py-3 px-5 text-left"
+                      className="py-2 px-4 text-left text-xs font-semibold uppercase text-blue-gray-500 border-b"
                     >
-                      <Typography
-                        variant="small"
-                        className="text-[11px] font-bold uppercase text-blue-gray-400"
-                      >
-                        {el}
-                      </Typography>
+                      {el}
                     </th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {activeStudents.map((student) => (
-                  <tr key={student._id}>
-                    <td className="py-3 px-5">
-                      <div className="flex items-center gap-4">
-                        <div>
-                          <Typography
-                            variant="small"
-                            color="blue-gray"
-                            className="font-semibold"
-                          >
-                            {student.name}
-                          </Typography>
-                          <Typography className="text-xs font-normal text-blue-gray-500">
-                            student.email
-                          </Typography>
-                        </div>
+                  <tr key={student._id} className="even:bg-gray-50">
+                    <td className="py-2 px-4">
+                      <div className="flex flex-col">
+                        <span className="text-sm font-medium text-blue-gray-700">
+                          {student.name}
+                        </span>
+                        <span className="text-xs text-blue-gray-400">
+                          {student.email}
+                        </span>
                       </div>
                     </td>
-                    <td className="py-3 px-5">
-                      <Typography className="text-xs font-semibold text-blue-gray-600">
-                        student.whatsappNo
-                      </Typography>
+                    <td className="py-2 px-4 text-sm text-blue-gray-600">
+                      {student.whatsappNo}
                     </td>
-                    <td className="py-3 px-5">
-                      <Typography className="text-xs font-semibold text-blue-gray-600">
-                        student.role
-                      </Typography>
+                    <td className="py-2 px-4 text-sm text-blue-gray-600">
+                      {student.role}
                     </td>
-                    <td className="py-3 px-5">
-                      <Typography className="text-xs font-semibold text-blue-gray-600">
-                        student.createdAt
-                      </Typography>
+                    <td className="py-2 px-4 text-sm text-blue-gray-600">
+                      {new Date(student.createdAt).toLocaleDateString()}
                     </td>
-                    <td className="py-3 px-5">
-                      <Typography className="text-xs font-semibold text-blue-gray-600">
-                        student.refer_code
-                      </Typography>
+                    <td className="py-2 px-4 text-sm text-blue-gray-600">
+                      {student.refer_code}
                     </td>
-                    <td className="py-3 px-5">
-                      <Typography className="text-xs font-bold text-blue-gray-500">
-                        student.refererCode
-                      </Typography>
+                    <td className="py-2 px-4 text-sm text-blue-gray-500 font-medium">
+                      {student.refererCode}
                     </td>
-                    <td className="py-3 px-5">
-                      <Typography className="text-xs font-semibold text-blue-gray-600">
-                        <p>student.totalBalance Tk</p>
-                      </Typography>
-                      <Typography className="text-xs font-semibold text-blue-gray-600">
-                        <div className="flex items-center gap-3">
-                          <Button
-                            onClick={() => openModal("debit", student)}
-                            className="capitalize py-1"
-                            color="red"
-                          >
-                            debit
-                          </Button>
-                          <Button
-                            onClick={() => openModal("credit", student)}
-                            className="capitalize py-1"
-                            color="green"
-                          >
-                            credit
-                          </Button>
-                        </div>
-                      </Typography>
+                    <td className="py-2 px-4 text-sm text-blue-gray-600">
+                      <span>{student.totalBalance} Tk</span>
+                      <div className="flex space-x-2 mt-1">
+                        <Button
+                          onClick={() => openModal("debit", student)}
+                          className="px-2 py-1 text-xs"
+                          color="red"
+                        >
+                          Debit
+                        </Button>
+                        <Button
+                          onClick={() => openModal("credit", student)}
+                          className="px-2 py-1 text-xs"
+                          color="green"
+                        >
+                          Credit
+                        </Button>
+                      </div>
                     </td>
-                    <td className="py-3 px-5">zczzx</td>
-                    <td className="py-3 px-5">
-                      <Typography className="text-xs font-semibold text-blue-gray-600">
-                        student.totalSubmitBalance
-                      </Typography>
+                    <td className="py-2 px-4 text-sm text-blue-gray-600">—</td>
+                    <td className="py-2 px-4 text-sm text-blue-gray-600">
+                      {student.totalSubmitBalance || 0}
                     </td>
-                    <td className="py-3 px-5">
-                      <Typography className="text-xs font-semibold text-blue-gray-600">
-                        student.homeworkSubmitHistory
-                      </Typography>
+                    <td className="py-2 px-4 text-sm text-blue-gray-600">
+                      {student.homeworkSubmitHistory?.length || 0}
                     </td>
-                    <td className="py-3 px-5">
-                      <Typography className="text-xs font-semibold text-blue-gray-600">
-                        student.totalLikeBalance
-                      </Typography>
+                    <td className="py-2 px-4 text-sm text-blue-gray-600">
+                      {student.totalLikeBalance || 0}
                     </td>
-                    <td className="py-3 px-5">
-                      <Typography className="text-xs font-semibold text-blue-gray-600">
-                        student.totalReferBalance
-                      </Typography>
+                    <td className="py-2 px-4 text-sm text-blue-gray-600">
+                      {student.totalReferBalance || 0}
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
-          </CardBody>
+          </div>
         </Card>
       </div>
       {modalOpen && (

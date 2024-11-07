@@ -188,6 +188,32 @@ const AdminNav = ({ sidenavType = "light" }) => {
           )}
         </NavLink>
       </li>
+      <li>
+        <NavLink to="/dashboard/adminAllUserlist">
+          {({ isActive }) => (
+            <Button
+              variant={isActive ? "gradient" : "text"}
+              color={
+                isActive
+                  ? "blue"
+                  : sidenavType === "dark"
+                  ? "white"
+                  : "blue-gray"
+              }
+              className="flex items-center gap-4 px-4 capitalize"
+              fullWidth
+            >
+              <IoPersonAdd />
+              <Typography
+                color="inherit"
+                className="font-medium text-sm capitalize"
+              >
+               All user
+              </Typography>
+            </Button>
+          )}
+        </NavLink>
+      </li>
       <li className="relative">
         <Button
           variant="text"
@@ -207,7 +233,7 @@ const AdminNav = ({ sidenavType = "light" }) => {
         </Button>
         {isDropdownOpen2 && (
           <ul className="absolute left-0 w-full bg-[#011627] dark:bg-gray-700 shadow-lg z-10">
-            <li>
+                        <li>
               <NavLink to="/dashboard/allStudent">
                 {({ isActive }) => (
                   <Button
@@ -911,34 +937,6 @@ const AdminNav = ({ sidenavType = "light" }) => {
                 )}
               </NavLink>
             </li>
-
-            <li>
-              <NavLink to="/dashboard/admin-trainer-list">
-                {({ isActive }) => (
-                  <Button
-                    variant={isActive ? "gradient" : "text"}
-                    color={
-                      isActive
-                        ? "blue"
-                        : sidenavType === "dark"
-                        ? "white"
-                        : "blue-gray"
-                    }
-                    className="flex items-center gap-4 px-4 capitalize"
-                    fullWidth
-                  >
-                    <CiViewList />
-                    <Typography
-                      color="inherit"
-                      className="font-medium text-sm capitalize"
-                    >
-                      Trainer List
-                    </Typography>
-                  </Button>
-                )}
-              </NavLink>
-            </li>
-
             <li>
               <NavLink to="/dashboard/teacherList">
                 {({ isActive }) => (
@@ -1042,32 +1040,6 @@ const AdminNav = ({ sidenavType = "light" }) => {
                 className="font-medium text-sm capitalize"
               >
                 account
-              </Typography>
-            </Button>
-          )}
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/dashboard/senior-senior">
-          {({ isActive }) => (
-            <Button
-              variant={isActive ? "gradient" : "text"}
-              color={
-                isActive
-                  ? "blue"
-                  : sidenavType === "dark"
-                  ? "white"
-                  : "blue-gray"
-              }
-              className="flex items-center gap-4 px-4 capitalize"
-              fullWidth
-            >
-              <MdOutlineAttachMoney />
-              <Typography
-                color="inherit"
-                className="font-medium text-sm capitalize"
-              >
-                senior to senior
               </Typography>
             </Button>
           )}

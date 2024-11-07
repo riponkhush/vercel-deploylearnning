@@ -138,7 +138,7 @@ const Councilor = ({ sidenavType = "light" }) => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="">
+        <NavLink to="/dashboard/councilor-Active-student">
           {({ isActive }) => (
             <Button
               variant={isActive ? "gradient" : "text"}
@@ -164,7 +164,7 @@ const Councilor = ({ sidenavType = "light" }) => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="">
+        <NavLink to="/dashboard/councilorInActiveStudent">
           {({ isActive }) => (
             <Button
               variant={isActive ? "gradient" : "text"}
