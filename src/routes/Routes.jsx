@@ -23,11 +23,11 @@ import SeniorTeamList from "../pages/Admin/SeniorTeamList";
 import TeacherList from "./../pages/Admin/TeacherList";
 import TeamLeaderList from "../pages/Admin/TeamLeaderList";
 import AllHomeworks from "./../pages/CheckerPages/AllHomeworks";
-import ActiveStudentForController from "./../pages/Controler/ActiveStudentForController";
-import CouncilorMappingStudent from "../pages/Controler/CouncilorMappingStudent";
-import CouncilorMappingSystem from "../pages/Controler/CouncilorMappingSystem";
-import MappingStudent from "../pages/Controler/MappingStudent";
-import NotMappingStudent from "../pages/Controler/NotMappingStudent";
+import ActiveStudentForController from "../pages/Controller/ActiveStudentForController";
+import CouncilorMappingStudent from "../pages/Controller/CouncilorMappingStudent";
+import CouncilorMappingSystem from "../pages/Controller/CouncilorMappingSystem";
+import MappingStudent from "../pages/Controller/MappingStudent";
+import NotMappingStudent from "../pages/Controller/NotMappingStudent";
 import ActiveStudentMapping from "../pages/Councilor/ActiveStudentMapping";
 import CouncilorActiveMember from "../pages/Councilor/CouncilorActiveMember";
 import CouncilorInActiveStudent from "../pages/Councilor/CouncilorInActiveStudent";
@@ -66,18 +66,19 @@ import UserDetail from "../pages/UserDetails/UserDetail";
 import AdminTrailerList from "../pages/Admin/AdminTrailerList";
 import AdminActiveStudentMap from "../pages/Admin/AdminActiveStudentMap";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import ControllerCouncilorList from "../pages/Controler/ControllerCouncilorList";
-import ControllerInactiveStudent from "../pages/Controler/controllerInactiveStudent";
-import MappedCouncilor from "../pages/Controler/MappedCouncilor";
+import ControllerCouncilorList from "../pages/Controller/ControllerCouncilorList";
+
+import MappedCouncilor from "../pages/Controller/MappedCouncilor";
 import CouncilorSeniorLeaderList from "../pages/Councilor/CouncilorSeniorLeaderList";
 import SeniorToSeniorMap from "../pages/Admin/SeniorToSeniorMap";
 import SeniorTeamLeaderList from "../pages/SeniorTeamLeader/SeniorTeamLeaderList";
 import ALlActiveForSeniorLeader from "../pages/SeniorTeamLeader/ALlActiveForSeniorLeader";
 import MappedStudents from "../pages/SeniorTeamLeader/MappedStudents";
-import SmsDoneStudent from "../pages/Controler/SmsDoneStudent";
+import SmsDoneStudent from "../pages/Controller/SmsDoneStudent";
 import TeamLeaderTeacherList from "../pages/TeamLeaderpage/TeamLeaderTeacherList";
 import LeaderActiveStudent from "../pages/TeamLeaderpage/LeaderActiveStudent";
 import LeaderInactiveStudent from "../pages/TeamLeaderpage/LeaderInactiveStudent";
+import ControllerInactiveStudent from "../pages/Controller/ControllerInactiveStudent";
 export const router = createBrowserRouter([
   {
     path: "/",
