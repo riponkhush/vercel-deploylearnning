@@ -16,6 +16,30 @@ const AllStudent = () => {
   const [students, setStudents] = useState([]);
   const [hoveredReferer, setHoveredReferer] = useState(null);
   const [open, setOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1); // Current page state
+  const [searchTerm, setSearchTerm] = useState(""); // Search term state
+  const itemsPerPage = 9; // Items per page
+  const filteredItems = students.filter((item) =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  item.whatsappNo.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredItems.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+
+  const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+    setCurrentPage(1);
+  };
+
+
+
+
+
+
+
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -206,6 +230,8 @@ const AllStudent = () => {
             <div id="input" className="relative outline-none">
               <input
                 type="text"
+                value={searchTerm}
+                onChange={handleSearch}
                 id="floating_outlined"
                 className="block md:w-full w-36 text-sm outline-none h-[36px] px-4 text-slate-900 bg-white rounded-[8px] border border-slate-200 appearance-none focus:border-transparent focus:outline focus:outline-2 focus:outline-primary focus:ring-0 hover:border-brand-500-secondary- peer invalid:border-error-500 invalid:focus:border-error-500 overflow-ellipsis overflow-hidden text-nowrap pr-[48px]"
                 placeholder="Search name or ID..."
@@ -247,7 +273,7 @@ const AllStudent = () => {
               </tr>
             </thead>
             <tbody>
-              {inactiveStudents.map((item) => (
+              {currentItems.map((item) => (
                 <tr key={item._id} className="even:bg-gray-50">
                   <td className="py-3 px-5">
                     <div className="flex flex-col md:flex-row items-start md:items-center gap-2">
@@ -360,6 +386,21 @@ const AllStudent = () => {
           </table>
         </div>
       </Card>
+      <div className="flex justify-center mt-4">
+          {[...Array(totalPages)].map((_, index) => (
+            <button
+              key={index}
+              onClick={() => handlePageChange(index + 1)}
+              className={`mx-1 px-3 text-xs py-1 rounded-lg ${
+                currentPage === index + 1
+                  ? "bg-blue-600 text-white"
+                  : "bg-gray-200"
+              }`}
+            >
+              {index + 1}
+            </button>
+          ))}
+        </div>
 
       <Dialog onClose={handleClose} open={open}>
         <form className="p-10">

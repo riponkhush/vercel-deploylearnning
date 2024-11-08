@@ -25,7 +25,7 @@ const AdminAllUserList = () => {
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [selectedUserId, setSelectedUserId] = useState(null);
-  
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
@@ -39,11 +39,13 @@ const AdminAllUserList = () => {
       })
       .catch((error) => {
         console.error("Error fetching inactive students:", error);
-      });
+      })
+      
   }, []);
 
   const filteredItems = userInfo.filter((item) =>
-    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+    item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  item.whatsappNo.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -127,7 +129,7 @@ const AdminAllUserList = () => {
                 <tr>
                   {[
                     "author",
-                    "designation",
+                    "role",
                     "status",
                     "date",
                     "country",
@@ -180,7 +182,7 @@ const AdminAllUserList = () => {
                     </td>
                     <td className="py-3 px-5">
                       <Typography className="text-xs font-semibold text-blue-gray-600 capitalize">
-                        {item.createdAt}
+                      {new Date(item.createdAt).toLocaleDateString()}
                       </Typography>
                     </td>
                     <td className="py-3 px-5">

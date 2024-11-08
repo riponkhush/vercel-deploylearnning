@@ -124,7 +124,7 @@ const AdminAllCourse = () => {
                     </td>
                     <td className="py-3 px-5">
                       <Typography className="text-xs font-semibold text-blue-gray-600">
-                        {item.createdAt}
+                      {new Date(item.createdAt).toLocaleDateString()}
                       </Typography>
                     </td>
                     <td className="py-3 px-5">
@@ -136,7 +136,7 @@ const AdminAllCourse = () => {
                           <MdOutlineDeleteOutline className="text-xl" />
                         </button>
                         <button
-                          onClick={() => handleUpdate(item._id)}
+                          
                           className="bg-red-400 w-6 h-6 flex items-center justify-center text-white  rounded-full hover:bg-red-600 duration-500 shadow-md drop-shadow-xl"
                         >
                           <CiEdit className="text-xl" />

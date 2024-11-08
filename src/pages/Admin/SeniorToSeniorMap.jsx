@@ -189,7 +189,7 @@ const SeniorToSeniorMap = () => {
                     </td>
                     <td className="py-3 px-5">
                       <Typography className="text-xs font-semibold text-blue-gray-600">
-                        {user.createdAt}
+                      {new Date(user.createdAt).toLocaleDateString()}
                       </Typography>
                     </td>
                     <td className="py-3 px-5">

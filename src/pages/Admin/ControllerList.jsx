@@ -227,7 +227,7 @@ const ControllerList = () => {
                   </td>
                   <td className="py-3 px-5">
                     <Typography className="text-xs font-semibold text-blue-gray-600">
-                      {leader.createdAt}
+                    {new Date(leader.createdAt).toLocaleDateString()}
                     </Typography>
                   </td>
                   <td className="py-3 px-5 flex items-center gap-2">

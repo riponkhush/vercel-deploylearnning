@@ -130,7 +130,7 @@ const ActiveUser = () => {
                 </tr>
               </thead>
               <tbody>
-                {activeStudents.map((student) => (
+                {activeStudents.map((student) => ( 
                   <tr key={student._id} className="even:bg-gray-50">
                     <td className="py-2 px-4">
                       <div className="flex flex-col">
@@ -190,7 +190,7 @@ const ActiveUser = () => {
                       {student.totalReferBalance || 0}
                     </td>
                   </tr>
-                ))}
+                ))} 
               </tbody>
             </table>
           </div>

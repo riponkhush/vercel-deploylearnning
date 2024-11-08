@@ -108,7 +108,7 @@ export const PhotoGallary = () => {
                   />
                   <div className="p-4">
                     <h2 className="text-xl  font-semibold">{item.title}</h2>
-                    <p className="text-gray-600 text-xs">{item.createdAt}</p>
+                    <p className="text-gray-600 text-xs">{new Date(item.createdAt).toLocaleDateString()}</p>
                     <div className="flex justify-between items-center mt-4">
                       <button
                         onClick={() => handleLike(item._id)}

@@ -231,7 +231,7 @@ export const Withdrawal = () => {
                       </td>
                       <td className="py-3 px-5">
                         <Typography className="text-sm font-medium text-gray-700">
-                          {entry.createdAt}
+                        {new Date(entry.createdAt).toLocaleDateString()}
                         </Typography>
                       </td>
                     </tr>
